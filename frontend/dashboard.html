@@ -1,9 +1,9 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>UrbanSense AI Dashboard</title>
@@ -22,82 +22,123 @@
     <!-- SIDEBAR -->
     <aside class="sidebar">
 
-        <div class="logo">
-            <div class="logo-title">
-                UrbanSense <span>AI</span>
-            </div>
+        <div class="brand">
+            <div class="brand-icon">U</div>
 
-            <div class="logo-subtitle">
-                MOBILE URBAN INTELLIGENCE
+            <div>
+                <div class="brand-name">
+                    UrbanSense <span>AI</span>
+                </div>
+
+                <div class="brand-subtitle">
+                    SMART CITY INTELLIGENCE
+                </div>
             </div>
+        </div>
+
+        <div class="sidebar-section-title">
+            MONITORING
         </div>
 
         <nav class="navigation">
 
             <a href="#" class="nav-item active">
-                Dashboard
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
             </a>
 
             <a href="#map-section" class="nav-item">
-                GIS Map
+                <span class="nav-icon">⌖</span>
+                <span>GIS Map</span>
             </a>
 
             <a href="#traffic-section" class="nav-item">
-                Traffic Analytics
+                <span class="nav-icon">▥</span>
+                <span>Traffic Analytics</span>
             </a>
 
             <a href="#events-section" class="nav-item">
-                Road Events
+                <span class="nav-icon">!</span>
+                <span>Road Events</span>
             </a>
 
         </nav>
 
-        <div class="system-status">
-            <span class="status-dot"></span>
-            System Online
+        <div class="sidebar-bottom">
+
+            <div class="system-status">
+                <span class="status-dot"></span>
+
+                <div>
+                    <strong>System Online</strong>
+                    <small>All services operational</small>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                AI • GIS • IoT
+            </div>
+
         </div>
 
     </aside>
 
 
-    <!-- MAIN CONTENT -->
+    <!-- MAIN -->
     <main class="main-content">
 
         <!-- HEADER -->
         <header class="top-header">
 
-            <div>
-                <h1>Urban Intelligence Dashboard</h1>
+            <div class="header-left">
+
+                <div class="eyebrow">
+                    URBAN MOBILITY MONITORING
+                </div>
+
+                <h1>
+                    Urban Intelligence Dashboard
+                </h1>
 
                 <p>
-                    AI-powered bus sensing and road monitoring
+                    Real-time AI-powered traffic and road monitoring
                 </p>
+
             </div>
 
-            <div class="fleet-status">
-                BUS FLEET
-                <span>ACTIVE</span>
+            <div class="header-right">
+
+                <div class="live-indicator">
+                    <span></span>
+                    LIVE
+                </div>
+
+                <div class="fleet-status">
+                    <span class="fleet-label">BUS FLEET</span>
+                    <strong>ACTIVE</strong>
+                </div>
+
             </div>
 
         </header>
 
 
-        <!-- STATISTICS -->
+        <!-- STAT CARDS -->
         <section class="stats-grid">
 
             <div class="stat-card">
 
-                <div class="stat-label">
-                    ACTIVE BUSES
+                <div class="stat-top">
+                    <span class="stat-label">ACTIVE BUSES</span>
+                    <div class="stat-icon">BUS</div>
                 </div>
 
-                <div id="activeBuses"
-                     class="stat-value">
+                <div id="activeBuses" class="stat-value">
                     0
                 </div>
 
                 <div class="stat-description">
-                    Fleet status
+                    Fleet currently active
                 </div>
 
             </div>
@@ -105,17 +146,17 @@
 
             <div class="stat-card">
 
-                <div class="stat-label">
-                    VEHICLES / 24H
+                <div class="stat-top">
+                    <span class="stat-label">VEHICLES / 24H</span>
+                    <div class="stat-icon">AI</div>
                 </div>
 
-                <div id="vehicles24h"
-                     class="stat-value">
+                <div id="vehicles24h" class="stat-value">
                     0
                 </div>
 
                 <div class="stat-description">
-                    AI detections
+                    Objects detected by AI
                 </div>
 
             </div>
@@ -123,17 +164,17 @@
 
             <div class="stat-card">
 
-                <div class="stat-label">
-                    ROAD EVENTS
+                <div class="stat-top">
+                    <span class="stat-label">ROAD EVENTS</span>
+                    <div class="stat-icon">EVT</div>
                 </div>
 
-                <div id="roadEvents"
-                     class="stat-value">
+                <div id="roadEvents" class="stat-value">
                     0
                 </div>
 
                 <div class="stat-description">
-                    Detected events
+                    Events detected today
                 </div>
 
             </div>
@@ -141,17 +182,17 @@
 
             <div class="stat-card">
 
-                <div class="stat-label">
-                    POTHOLES
+                <div class="stat-top">
+                    <span class="stat-label">POTHOLES</span>
+                    <div class="stat-icon">RD</div>
                 </div>
 
-                <div id="potholes"
-                     class="stat-value">
+                <div id="potholes" class="stat-value">
                     0
                 </div>
 
                 <div class="stat-description">
-                    Road defects
+                    Road defects detected
                 </div>
 
             </div>
@@ -162,19 +203,28 @@
         <!-- MAP + TRAFFIC -->
         <section class="main-grid">
 
-            <!-- MAP -->
-            <div class="panel"
-                 id="map-section">
+            <!-- GIS MAP -->
+            <div class="panel map-panel" id="map-section">
 
                 <div class="panel-header">
 
-                    <h2>
-                        Live GIS Map
-                    </h2>
+                    <div>
+                        <div class="panel-kicker">
+                            LOCATION INTELLIGENCE
+                        </div>
 
-                    <span>
-                        Bus & event locations
-                    </span>
+                        <h2>
+                            Live GIS Map
+                        </h2>
+
+                        <span>
+                            Bus and road-event locations
+                        </span>
+                    </div>
+
+                    <div class="panel-badge">
+                        ● LIVE DATA
+                    </div>
 
                 </div>
 
@@ -184,28 +234,32 @@
 
 
             <!-- TRAFFIC -->
-            <div class="panel"
-                 id="traffic-section">
+            <div class="panel traffic-panel" id="traffic-section">
 
                 <div class="panel-header">
 
-                    <h2>
-                        Traffic Analytics
-                    </h2>
+                    <div>
+                        <div class="panel-kicker">
+                            TRAFFIC MONITORING
+                        </div>
 
-                    <span>
-                        Last 24 hours
-                    </span>
+                        <h2>
+                            Traffic Analytics
+                        </h2>
+
+                        <span>
+                            Detection activity over the last 24 hours
+                        </span>
+                    </div>
 
                 </div>
 
 
                 <div class="traffic-grid">
 
-                    <div class="traffic-box">
+                    <div class="traffic-box low">
 
-                        <div id="lowTraffic"
-                             class="traffic-number">
+                        <div id="lowTraffic" class="traffic-number">
                             0
                         </div>
 
@@ -213,13 +267,16 @@
                             LOW
                         </div>
 
+                        <div class="traffic-status">
+                            Normal flow
+                        </div>
+
                     </div>
 
 
-                    <div class="traffic-box">
+                    <div class="traffic-box medium">
 
-                        <div id="mediumTraffic"
-                             class="traffic-number">
+                        <div id="mediumTraffic" class="traffic-number">
                             0
                         </div>
 
@@ -227,13 +284,16 @@
                             MEDIUM
                         </div>
 
+                        <div class="traffic-status">
+                            Moderate flow
+                        </div>
+
                     </div>
 
 
-                    <div class="traffic-box">
+                    <div class="traffic-box high">
 
-                        <div id="highTraffic"
-                             class="traffic-number">
+                        <div id="highTraffic" class="traffic-number">
                             0
                         </div>
 
@@ -241,21 +301,55 @@
                             HIGH
                         </div>
 
+                        <div class="traffic-status">
+                            Heavy flow
+                        </div>
+
                     </div>
 
                 </div>
 
 
+                <!-- AI PIPELINE -->
                 <div class="pipeline">
 
-                    <h3>
-                        Edge AI Pipeline
-                    </h3>
+                    <div class="pipeline-header">
+                        <div>
+                            <span class="pipeline-kicker">PROCESSING</span>
+                            <h3>Edge AI Pipeline</h3>
+                        </div>
 
-                    <p>
-                        Camera → YOLO → Tracking → Vehicle Classification
-                        → Collision Analysis → GPS → API → MySQL → GIS
-                    </p>
+                        <span class="pipeline-live">
+                            ● ACTIVE
+                        </span>
+                    </div>
+
+                    <div class="pipeline-flow">
+
+                        <span>Camera</span>
+                        <b>→</b>
+
+                        <span>YOLO</span>
+                        <b>→</b>
+
+                        <span>Tracking</span>
+                        <b>→</b>
+
+                        <span>Classification</span>
+                        <b>→</b>
+
+                        <span>GPS</span>
+                        <b>→</b>
+
+                        <span>API</span>
+                        <b>→</b>
+
+                        <span>MySQL</span>
+                        <b>→</b>
+
+                        <span>GIS</span>
+
+                    </div>
 
                 </div>
 
@@ -272,7 +366,11 @@
                 !
             </div>
 
-            <div>
+            <div class="alert-content">
+
+                <div class="alert-label">
+                    SAFETY ALERT
+                </div>
 
                 <h2>
                     POTENTIAL COLLISION DETECTED
@@ -288,18 +386,27 @@
 
 
         <!-- ROAD EVENTS -->
-        <section class="panel"
-                 id="events-section">
+        <section class="panel" id="events-section">
 
             <div class="panel-header">
 
-                <h2>
-                    Recent Road Events
-                </h2>
+                <div>
+                    <div class="panel-kicker">
+                        INCIDENT MONITORING
+                    </div>
+
+                    <h2>
+                        Recent Road Events
+                    </h2>
+
+                    <span>
+                        AI-detected road incidents and defects
+                    </span>
+                </div>
 
                 <button id="demoPotholeButton"
                         class="demo-button">
-                    Demo Pothole Event
+                    + Demo Pothole Event
                 </button>
 
             </div>
@@ -310,16 +417,14 @@
                 <table>
 
                     <thead>
-
                     <tr>
-                        <th>Type</th>
-                        <th>Sensing Bus</th>
-                        <th>Severity</th>
-                        <th>Confidence</th>
-                        <th>Location</th>
-                        <th>Time</th>
+                        <th>TYPE</th>
+                        <th>SENSING BUS</th>
+                        <th>SEVERITY</th>
+                        <th>CONFIDENCE</th>
+                        <th>LOCATION</th>
+                        <th>TIME</th>
                     </tr>
-
                     </thead>
 
                     <tbody id="eventTableBody">
@@ -339,26 +444,29 @@
         </section>
 
 
-        <!-- ACTUAL VEHICLE DETECTIONS -->
+        <!-- AI DETECTIONS -->
         <section class="panel">
 
             <div class="panel-header">
 
                 <div>
+                    <div class="panel-kicker">
+                        COMPUTER VISION
+                    </div>
 
                     <h2>
                         Latest AI Detections
                     </h2>
 
                     <span>
-                        Actual objects detected by YOLO
+                        Vehicle and object detections from YOLO
                     </span>
-
                 </div>
 
-                <span class="live-label">
-                    Live backend data
-                </span>
+                <div class="live-data">
+                    <span></span>
+                    LIVE BACKEND DATA
+                </div>
 
             </div>
 
@@ -368,62 +476,26 @@
                 <table class="detection-table">
 
                     <thead>
-
                     <tr>
-
-                        <th>
-                            Sensing Bus
-                        </th>
-
-                        <th>
-                            Cars
-                        </th>
-
-                        <th>
-                            Buses
-                        </th>
-
-                        <th>
-                            Trucks
-                        </th>
-
-                        <th>
-                            Motorcycles
-                        </th>
-
-                        <th>
-                            Bicycles
-                        </th>
-
-                        <th>
-                            Persons
-                        </th>
-
-                        <th>
-                            Total
-                        </th>
-
-                        <th>
-                            Traffic
-                        </th>
-
-                        <th>
-                            Time
-                        </th>
-
+                        <th>SENSING BUS</th>
+                        <th>CARS</th>
+                        <th>BUSES</th>
+                        <th>TRUCKS</th>
+                        <th>MOTORCYCLES</th>
+                        <th>BICYCLES</th>
+                        <th>PERSONS</th>
+                        <th>TOTAL</th>
+                        <th>TRAFFIC</th>
+                        <th>TIME</th>
                     </tr>
-
                     </thead>
-
 
                     <tbody id="detectionTableBody">
 
                     <tr>
-
                         <td colspan="10">
                             Waiting for AI detection data...
                         </td>
-
                     </tr>
 
                     </tbody>
@@ -433,6 +505,20 @@
             </div>
 
         </section>
+
+
+        <!-- FOOTER -->
+        <footer class="dashboard-footer">
+
+            <span>
+                UrbanSense AI
+            </span>
+
+            <span>
+                Real-time Urban Intelligence Platform
+            </span>
+
+        </footer>
 
     </main>
 
@@ -449,3 +535,4 @@
 </body>
 
 </html>
+```
