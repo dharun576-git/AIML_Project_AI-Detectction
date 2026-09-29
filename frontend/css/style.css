@@ -1,0 +1,431 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #07111f;
+    color: #ffffff;
+}
+
+.app {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* SIDEBAR */
+
+.sidebar {
+    width: 145px;
+    background: #071423;
+    border-right: 1px solid #1b3047;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding: 18px 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    margin-bottom: 28px;
+}
+
+.logo-title {
+    font-size: 18px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.logo-title span {
+    color: #20a4ff;
+}
+
+.logo-subtitle {
+    margin-top: 3px;
+    font-size: 6px;
+    color: #53708f;
+    letter-spacing: 1px;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.nav-item {
+    color: #b9c8d8;
+    text-decoration: none;
+    padding: 9px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+}
+
+.nav-item:hover {
+    background: #102d48;
+    color: #ffffff;
+}
+
+.nav-item.active {
+    background: #123451;
+    color: #ffffff;
+}
+
+.system-status {
+    margin-top: auto;
+    font-size: 9px;
+    color: #61e68c;
+}
+
+.status-dot {
+    width: 5px;
+    height: 5px;
+    display: inline-block;
+    border-radius: 50%;
+    background: #39e67b;
+    margin-right: 4px;
+}
+
+
+/* MAIN */
+
+.main-content {
+    margin-left: 145px;
+    width: calc(100% - 145px);
+    padding: 18px 20px 30px;
+}
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 18px;
+}
+
+.top-header h1 {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.top-header p {
+    color: #7190ae;
+    font-size: 11px;
+}
+
+.fleet-status {
+    border: 1px solid #235075;
+    border-radius: 7px;
+    padding: 7px 11px;
+    font-size: 7px;
+    color: #7294b5;
+}
+
+.fleet-status span {
+    color: #51dc8a;
+    margin-left: 5px;
+}
+
+
+/* STAT CARDS */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.stat-card {
+    background: #0b1a2c;
+    border: 1px solid #1d3853;
+    border-radius: 8px;
+    padding: 13px;
+}
+
+.stat-label {
+    color: #6080a1;
+    font-size: 7px;
+    letter-spacing: 1px;
+}
+
+.stat-value {
+    font-size: 25px;
+    font-weight: 700;
+    margin: 5px 0;
+}
+
+.stat-description {
+    font-size: 8px;
+    color: #526f8c;
+}
+
+
+/* MAIN GRID */
+
+.main-grid {
+    display: grid;
+    grid-template-columns: 1.35fr 0.85fr;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+
+/* PANELS */
+
+.panel {
+    background: #0b1a2c;
+    border: 1px solid #1d3853;
+    border-radius: 8px;
+    padding: 13px;
+    margin-bottom: 14px;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.panel-header h2 {
+    font-size: 12px;
+}
+
+.panel-header span {
+    color: #6685a4;
+    font-size: 7px;
+}
+
+
+/* MAP */
+
+#map {
+    height: 275px;
+    width: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+
+/* TRAFFIC */
+
+.traffic-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 28px;
+}
+
+.traffic-box {
+    text-align: center;
+}
+
+.traffic-number {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.traffic-label {
+    color: #6182a4;
+    font-size: 7px;
+    margin-top: 4px;
+}
+
+.pipeline {
+    background: #081525;
+    border-radius: 7px;
+    padding: 13px;
+    margin-top: 38px;
+}
+
+.pipeline h3 {
+    font-size: 9px;
+    margin-bottom: 8px;
+}
+
+.pipeline p {
+    color: #7a98b4;
+    font-size: 7px;
+    line-height: 1.6;
+}
+
+
+/* COLLISION ALERT */
+
+.collision-alert {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #42131a;
+    border: 1px solid #e83d4f;
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 14px;
+}
+
+.collision-alert.hidden {
+    display: none;
+}
+
+.alert-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #e83d4f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.collision-alert h2 {
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.collision-alert p {
+    color: #e8a8ae;
+    font-size: 9px;
+}
+
+
+/* TABLE */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+}
+
+.detection-table {
+    min-width: 1150px;
+}
+
+th {
+    text-align: left;
+    padding: 9px 7px;
+    color: #6685a4;
+    font-size: 7px;
+    font-weight: 500;
+    border-bottom: 1px solid #203b56;
+    white-space: nowrap;
+}
+
+td {
+    padding: 8px 7px;
+    color: #d0dbe6;
+    font-size: 8px;
+    border-bottom: 1px solid #172d43;
+    white-space: nowrap;
+}
+
+tr:hover {
+    background: #0d2135;
+}
+
+
+/* TRAFFIC STATUS */
+
+.traffic-low {
+    color: #52d98a;
+    font-weight: 600;
+}
+
+.traffic-medium {
+    color: #f0bd4f;
+    font-weight: 600;
+}
+
+.traffic-high {
+    color: #ff5b69;
+    font-weight: 700;
+}
+
+
+/* EVENT TYPES */
+
+.event-potential {
+    color: #ff5968;
+    font-weight: 700;
+}
+
+.event-pothole {
+    color: #f2bd52;
+    font-weight: 600;
+}
+
+
+/* BUTTON */
+
+.demo-button {
+    border: none;
+    background: #168bd0;
+    color: #ffffff;
+    padding: 7px 10px;
+    border-radius: 5px;
+    font-size: 8px;
+    cursor: pointer;
+}
+
+.demo-button:hover {
+    background: #20a4ef;
+}
+
+.demo-button:active {
+    transform: scale(0.98);
+}
+
+
+/* LIVE LABEL */
+
+.live-label {
+    color: #4ddf8a !important;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .sidebar {
+        width: 110px;
+    }
+
+    .main-content {
+        margin-left: 110px;
+        width: calc(100% - 110px);
+        padding: 12px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

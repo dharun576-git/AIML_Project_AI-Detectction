@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>UrbanSense AI Dashboard</title>
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          crossorigin=""/>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-title">
+                UrbanSense <span>AI</span>
+            </div>
+
+            <div class="logo-subtitle">
+                MOBILE URBAN INTELLIGENCE
+            </div>
+        </div>
+
+        <nav class="navigation">
+
+            <a href="#" class="nav-item active">
+                Dashboard
+            </a>
+
+            <a href="#map-section" class="nav-item">
+                GIS Map
+            </a>
+
+            <a href="#traffic-section" class="nav-item">
+                Traffic Analytics
+            </a>
+
+            <a href="#events-section" class="nav-item">
+                Road Events
+            </a>
+
+        </nav>
+
+        <div class="system-status">
+            <span class="status-dot"></span>
+            System Online
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- HEADER -->
+        <header class="top-header">
+
+            <div>
+                <h1>Urban Intelligence Dashboard</h1>
+
+                <p>
+                    AI-powered bus sensing and road monitoring
+                </p>
+            </div>
+
+            <div class="fleet-status">
+                BUS FLEET
+                <span>ACTIVE</span>
+            </div>
+
+        </header>
+
+
+        <!-- STATISTICS -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    ACTIVE BUSES
+                </div>
+
+                <div id="activeBuses"
+                     class="stat-value">
+                    0
+                </div>
+
+                <div class="stat-description">
+                    Fleet status
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    VEHICLES / 24H
+                </div>
+
+                <div id="vehicles24h"
+                     class="stat-value">
+                    0
+                </div>
+
+                <div class="stat-description">
+                    AI detections
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    ROAD EVENTS
+                </div>
+
+                <div id="roadEvents"
+                     class="stat-value">
+                    0
+                </div>
+
+                <div class="stat-description">
+                    Detected events
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    POTHOLES
+                </div>
+
+                <div id="potholes"
+                     class="stat-value">
+                    0
+                </div>
+
+                <div class="stat-description">
+                    Road defects
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MAP + TRAFFIC -->
+        <section class="main-grid">
+
+            <!-- MAP -->
+            <div class="panel"
+                 id="map-section">
+
+                <div class="panel-header">
+
+                    <h2>
+                        Live GIS Map
+                    </h2>
+
+                    <span>
+                        Bus & event locations
+                    </span>
+
+                </div>
+
+                <div id="map"></div>
+
+            </div>
+
+
+            <!-- TRAFFIC -->
+            <div class="panel"
+                 id="traffic-section">
+
+                <div class="panel-header">
+
+                    <h2>
+                        Traffic Analytics
+                    </h2>
+
+                    <span>
+                        Last 24 hours
+                    </span>
+
+                </div>
+
+
+                <div class="traffic-grid">
+
+                    <div class="traffic-box">
+
+                        <div id="lowTraffic"
+                             class="traffic-number">
+                            0
+                        </div>
+
+                        <div class="traffic-label">
+                            LOW
+                        </div>
+
+                    </div>
+
+
+                    <div class="traffic-box">
+
+                        <div id="mediumTraffic"
+                             class="traffic-number">
+                            0
+                        </div>
+
+                        <div class="traffic-label">
+                            MEDIUM
+                        </div>
+
+                    </div>
+
+
+                    <div class="traffic-box">
+
+                        <div id="highTraffic"
+                             class="traffic-number">
+                            0
+                        </div>
+
+                        <div class="traffic-label">
+                            HIGH
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="pipeline">
+
+                    <h3>
+                        Edge AI Pipeline
+                    </h3>
+
+                    <p>
+                        Camera → YOLO → Tracking → Vehicle Classification
+                        → Collision Analysis → GPS → API → MySQL → GIS
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- COLLISION ALERT -->
+        <section id="collisionAlert"
+                 class="collision-alert hidden">
+
+            <div class="alert-icon">
+                !
+            </div>
+
+            <div>
+
+                <h2>
+                    POTENTIAL COLLISION DETECTED
+                </h2>
+
+                <p id="collisionText">
+                    Potential accident risk detected from vehicle movement.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ROAD EVENTS -->
+        <section class="panel"
+                 id="events-section">
+
+            <div class="panel-header">
+
+                <h2>
+                    Recent Road Events
+                </h2>
+
+                <button id="demoPotholeButton"
+                        class="demo-button">
+                    Demo Pothole Event
+                </button>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                    <tr>
+                        <th>Type</th>
+                        <th>Sensing Bus</th>
+                        <th>Severity</th>
+                        <th>Confidence</th>
+                        <th>Location</th>
+                        <th>Time</th>
+                    </tr>
+
+                    </thead>
+
+                    <tbody id="eventTableBody">
+
+                    <tr>
+                        <td colspan="6">
+                            Loading events...
+                        </td>
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ACTUAL VEHICLE DETECTIONS -->
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        Latest AI Detections
+                    </h2>
+
+                    <span>
+                        Actual objects detected by YOLO
+                    </span>
+
+                </div>
+
+                <span class="live-label">
+                    Live backend data
+                </span>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table class="detection-table">
+
+                    <thead>
+
+                    <tr>
+
+                        <th>
+                            Sensing Bus
+                        </th>
+
+                        <th>
+                            Cars
+                        </th>
+
+                        <th>
+                            Buses
+                        </th>
+
+                        <th>
+                            Trucks
+                        </th>
+
+                        <th>
+                            Motorcycles
+                        </th>
+
+                        <th>
+                            Bicycles
+                        </th>
+
+                        <th>
+                            Persons
+                        </th>
+
+                        <th>
+                            Total
+                        </th>
+
+                        <th>
+                            Traffic
+                        </th>
+
+                        <th>
+                            Time
+                        </th>
+
+                    </tr>
+
+                    </thead>
+
+
+                    <tbody id="detectionTableBody">
+
+                    <tr>
+
+                        <td colspan="10">
+                            Waiting for AI detection data...
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    crossorigin="">
+</script>
+
+<script src="/static/js/dashboard.js"></script>
+
+</body>
+
+</html>
